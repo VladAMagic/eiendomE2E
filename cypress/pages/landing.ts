@@ -1,3 +1,5 @@
+import { SearchOverlay } from '../pageComponents/searchOverlay'
+
 // cypress/pages/landing.ts
 export const LandingPage = {
     loginLink: '[data-testid="log-in-button"]',
@@ -6,6 +8,6 @@ export const LandingPage = {
     passwordInput: '[data-testid="user-password"]',
     submitPasswordButton: '[data-testid="modal-login-submit"]',
     userAvatar: '[data-testid="user-avatar-toggle"]',
-    searchInput: '[data-testid="search-input"]',
-    searchResultsSuggestionList: '[data-testid="locations-expanded"] > div.section-result',
+    searchInput: SearchOverlay.searchInput,
+    searchResultsLocationSuggestionList: SearchOverlay.searchResultsLocationSuggestionList,
 }
