@@ -6,6 +6,16 @@ import { ProjectCard } from '../../pageComponents/projectCard'
 describe('Favourites ', function () {
     before(function () {
         cy.clearAllSessionStorage()
+        /*
+         * TO DO: add a command that clears all favourites from user profile,
+         * as to not interfere with the tests. I have looked into it, but haven't
+         * been able to come up with a clean workable solution due to Cypress
+         * limitations, and without maybe a considerable time investment.
+         * Thus, I have decided to leave it out for now.
+         * Ideally I would have wanted the tests to be independent of each other,
+         * and making use of session management, possibly each with it's own user,
+         * or at least an easier way to clean up.
+         */
     })
 
     beforeEach(function () {
