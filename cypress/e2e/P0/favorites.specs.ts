@@ -1,6 +1,7 @@
 import { LandingPage } from '../../pages/landing'
 import { SearchResultsPage } from '../../pages/searchResults'
 import { FavouritesPage } from '../../pages/favorites'
+import { ProjectCard } from '../../pageComponents/projectCard'
 
 describe('Favourites ', function () {
     before(function () {
@@ -20,23 +21,16 @@ describe('Favourites ', function () {
         cy.get(SearchResultsPage.resultsList).should('be.visible')
         cy.get(SearchResultsPage.resultsList)
             .first()
-            .find(SearchResultsPage.addToFavoritesButton)
+            .find(ProjectCard.addToFavouritesButton)
             .should('be.visible')
             .and('not.have.a.property', 'style')
-        cy.get(SearchResultsPage.resultsList).first().find(SearchResultsPage.addToFavoritesButton).click()
+        cy.get(SearchResultsPage.resultsList).first().find(ProjectCard.addToFavouritesButton).click()
+        cy.get(SearchResultsPage.resultsList).first().find(ProjectCard.removeFromFavouritesButton).should('be.visible')
         cy.get(SearchResultsPage.resultsList)
             .first()
-            .find(SearchResultsPage.removeFromFavoritesButton)
-            .should('be.visible')
-        cy.get(SearchResultsPage.resultsList)
-            .first()
-            .find(SearchResultsPage.addToFavoritesButton)
+            .find(ProjectCard.addToFavouritesButton)
             .should('have.attr', 'style', 'display: none;')
-        cy.get(SearchResultsPage.resultsList)
-            .first()
-            .find(SearchResultsPage.cardTitle)
-            .invoke('text')
-            .as('projectTitle')
+        cy.get(SearchResultsPage.resultsList).first().find(ProjectCard.cardTitle).invoke('text').as('projectTitle')
     })
 
     it('previously marked are visible in profile', function () {
@@ -51,7 +45,7 @@ describe('Favourites ', function () {
         cy.get(FavouritesPage.projectCard)
             .contains(this.projectTitle)
             .parents(FavouritesPage.projectCard)
-            .find(FavouritesPage.removeFromFavouritesButton)
+            .find(ProjectCard.removeFromFavouritesButton)
             .click()
     })
 })
